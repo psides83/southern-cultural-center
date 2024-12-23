@@ -13,45 +13,47 @@ import { Stack } from "@mui/material";
 import siteData from "services/json-data-api";
 import VideoFilter from "../components/VideoFilter";
 import NewsSection from "pages/Media/News";
+import EventsSection from "pages/Media/Events";
+import VideoArchive from "pages/Media/VideoArchive";
 
 function VideosSection() {
   const ref = useRef(null);
-  const tabs = ["Videos", "News", "Events"];
-  const [playlists, setPlaylists] = useState(null);
-  const [selectedVideo, setSelectedVideo] = useState({});
-  const [videos, setVideos] = useState([]);
+  const tabs = ["News", "Events", "National Conference", "Monthly Meetings", "Video Archive"];
+  // const [playlists, setPlaylists] = useState(null);
+  // const [selectedVideo, setSelectedVideo] = useState({});
+  // const [videos, setVideos] = useState([]);
   const [activeTab, setActiveTab] = useState(tabs[0]);
-  const [activePlaylist, setActivePlaylist] = useState(null);
+  // const [activePlaylist, setActivePlaylist] = useState(null);
 
-  const youtubeAPI = new YouTubeAPI(
-    setPlaylists,
-    activePlaylist,
-    setActivePlaylist,
-    setSelectedVideo,
-    setVideos
-  );
+  // const youtubeAPI = new YouTubeAPI(
+  //   setPlaylists,
+  //   activePlaylist,
+  //   setActivePlaylist,
+  //   setSelectedVideo,
+  //   setVideos
+  // );
 
-  const fetchVideos = useCallback(async () => {
-    await youtubeAPI.fetch();
-  }, [activePlaylist]);
+  // const fetchVideos = useCallback(async () => {
+  //   await youtubeAPI.fetch();
+  // }, [activePlaylist]);
 
-  const fetchPlaylists = useCallback(async () => {
-    const json = await siteData.playlists();
+  // const fetchPlaylists = useCallback(async () => {
+  //   const json = await siteData.playlists();
 
-    console.log(json);
-    setPlaylists(json);
-    setActivePlaylist(json[0]);
-  }, []);
+  //   console.log(json);
+  //   setPlaylists(json);
+  //   setActivePlaylist(json[0]);
+  // }, []);
 
-  useEffect(() => {
-    if (activePlaylist == null) {
-      fetchPlaylists();
-    }
+  // useEffect(() => {
+  //   if (activePlaylist == null) {
+  //     fetchPlaylists();
+  //   }
 
-    if (playlists != null) {
-      fetchVideos();
-    }
-  }, [activePlaylist]);
+  //   if (playlists != null) {
+  //     fetchVideos();
+  //   }
+  // }, [activePlaylist]);
 
   // const handleChangePage = (event, newPage) => {
   //   if (newPage > page) {
@@ -65,13 +67,13 @@ function VideosSection() {
   //   }
   // };
 
-  function selectVideo(e, video) {
-    e.preventDefault();
-    e.stopPropagation();
+  // function selectVideo(e, video) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
 
-    setSelectedVideo(video);
-    ref.current?.scrollIntoView({ behavior: "smooth" });
-  }
+  //   setSelectedVideo(video);
+  //   ref.current?.scrollIntoView({ behavior: "smooth" });
+  // }
 
   return (
     <MKBox style={{ background: "white" }} shadow="lg">
@@ -83,37 +85,9 @@ function VideosSection() {
 
       {activeTab == "News" && <NewsSection />}
 
-      {activeTab == "Videos" && (
-        <>
-          <MKBox ref={ref} mx="auto" my="0px" py="40px" maxWidth="1440px">
-            <YouTubePlayer video={selectedVideo} />
-          </MKBox>
+      {activeTab == "Events" && <EventsSection />}
 
-          <Stack direction="row" justifyContent="center" alignContent="center" alignItems="end">
-            {activePlaylist != null && (
-              <VideoFilter
-                playlists={playlists}
-                activePlaylist={activePlaylist}
-                setActivePlaylist={setActivePlaylist}
-                // selectedYear={selectedYear}
-                // setSelectedyear={setSelectedyear}
-                // setPageToken={setPageToken}
-                // setPage={setPage}
-              />
-            )}
-          </Stack>
-
-          <VideoGrid
-            videos={videos}
-            selectedVideo={selectedVideo}
-            selectVideo={selectVideo}
-            // totalVideos={totalVideos}
-            // page={page}
-            // handleChangePage={handleChangePage}
-            // perPage={perPage}
-          />
-        </>
-      )}
+      {activeTab == "Video Archive" && <VideoArchive />}
     </MKBox>
   );
 }

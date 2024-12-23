@@ -6,7 +6,7 @@ import MKBox from "components/MKBox";
 import { Link, Stack } from "@mui/material";
 import MKTypography from "components/MKTypography";
 
-function NewsSection() {
+function EventsSection() {
   const ref = useRef(null);
   //   const tabs = ["Videos", "News", "Events"];
   //   const [playlists, setPlaylists] = useState(null);
@@ -86,10 +86,13 @@ function NewsSection() {
       spacing="10px"
     >
       <MKTypography variant="h3" justifySelf="center" mt="20px">
-        Newsletters
+        Events
       </MKTypography>
-      <Link href="https://psides83.github.io/listJSON/scc-news/nov2024.pdf" target="blank">
-        November 2024
+      <Link
+        href="https://psides83.github.io/listJSON/scc-events/2025-pheasant-shoot.pdf"
+        target="blank"
+      >
+        January 18, 2024 - 6th Annual Pheasant Shoot
       </Link>
 
       <MKTypography variant="caption">
@@ -99,4 +102,4 @@ function NewsSection() {
   );
 }
 
-export default NewsSection;
+export default EventsSection;
