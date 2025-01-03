@@ -4,8 +4,8 @@ class SiteData {
 
   // global json data links
   urls = {
-    podcastServers: this.baseURL.concat("podcast-servers.json"),
     playlists: this.baseURL.concat("scc-playlists.json"),
+    events: this.baseURL.concat("scc-events.json"),
   };
 
   // eslint-disable-next-line
@@ -15,40 +15,10 @@ class SiteData {
   }
 
   // eslint-disable-next-line
-  staff = async () => await this.fetchData(this.urls.staff);
-
-  // eslint-disable-next-line
-  whoWeAre = async () => await this.fetchData(this.urls.whoWeAre);
-
-  // eslint-disable-next-line
-  baptistFaith = async () => await this.fetchData(this.urls.baptistFaith);
-
-  // eslint-disable-next-line
-  gospel = async () => await this.fetchData(this.urls.gospel);
-
-  // eslint-disable-next-line
-  membership = async () => await this.fetchData(this.urls.membership);
-
-  // eslint-disable-next-line
-  worshipSection = async () => await this.fetchData(this.urls.worshipSection);
-
-  // eslint-disable-next-line
-  serviceStreams = async () => await this.fetchData(this.urls.serviceStreams);
-
-  // eslint-disable-next-line
-  blogPosts = async () => await this.fetchData(this.urls.blogPosts);
-
-  // eslint-disable-next-line
-  bibleStudies = async () => await this.fetchData(this.urls.bibleStudies);
-
-  // eslint-disable-next-line
-  podcastServers = async () => await this.fetchData(this.urls.podcastServers);
-
-  // eslint-disable-next-line
-  times = async () => await this.fetchData(this.urls.times);
-
-  // eslint-disable-next-line
   playlists = async () => await this.fetchData(this.urls.playlists);
+
+  // eslint-disable-next-line
+  events = async () => await this.fetchData(this.urls.events);
 }
 
 const siteData = new SiteData();

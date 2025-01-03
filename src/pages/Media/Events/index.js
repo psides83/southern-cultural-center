@@ -5,9 +5,11 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import MKBox from "components/MKBox";
 import { Link, Stack } from "@mui/material";
 import MKTypography from "components/MKTypography";
+import useEvents from "hooks/events-hook";
 
 function EventsSection() {
   const ref = useRef(null);
+  const events = useEvents();
   //   const tabs = ["Videos", "News", "Events"];
   //   const [playlists, setPlaylists] = useState(null);
   //   const [selectedVideo, setSelectedVideo] = useState({});
@@ -88,15 +90,14 @@ function EventsSection() {
       <MKTypography variant="h3" justifySelf="center" mt="20px">
         Events
       </MKTypography>
-      <Link
-        href="https://psides83.github.io/listJSON/scc-events/2025-pheasant-shoot.pdf"
-        target="blank"
-      >
-        January 18, 2024 - 6th Annual Pheasant Shoot
-      </Link>
+      {events.map((event) => (
+        <Link key={event.url} href={event.url} target="blank">
+          {event.title}
+        </Link>
+      ))}
 
       <MKTypography variant="caption">
-        * Click on a listed event to opent he flyer for the event.
+        * Click on a listed event to open the flyer for the event.
       </MKTypography>
     </Stack>
   );

@@ -15,6 +15,8 @@ import VideoFilter from "../components/VideoFilter";
 import NewsSection from "pages/Media/News";
 import EventsSection from "pages/Media/Events";
 import VideoArchive from "pages/Media/VideoArchive";
+import NationalConference from "pages/Media/NationalConference";
+import MonthlyMeetings from "pages/Media/MonthlyMeetings";
 
 function VideosSection() {
   const ref = useRef(null);
@@ -86,6 +88,10 @@ function VideosSection() {
       {activeTab == "News" && <NewsSection />}
 
       {activeTab == "Events" && <EventsSection />}
+
+      {activeTab == "National Conference" && <NationalConference />}
+
+      {activeTab == "Monthly Meetings" && <MonthlyMeetings />}
 
       {activeTab == "Video Archive" && <VideoArchive />}
     </MKBox>
