@@ -75,7 +75,7 @@ function MonthlyMeetings() {
   return (
     <MKBox style={{ background: "white" }} shadow="lg">
       <MKTypography variant="h3" justifySelf="center" mt="20px">
-        2024 National Conference
+        Monthly Meetings
       </MKTypography>
 
       <MKBox ref={ref} mx="auto" my="0px" py="40px" maxWidth="1440px">

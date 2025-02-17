@@ -16,7 +16,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "assets/theme";
 
 // FBCE routes
-// import routes from "routes";
+import routes from "routes";
 // import Home from "pages/Home";
 // import SingleArticle from "pages/Blog/sections/single-article";
 // import VisitorCardGoogle from "pages/ContactUs/VisitorCardGoogle";
@@ -46,25 +46,25 @@ export default function App() {
     document.scrollingElement.scrollTop = 0;
   }, [pathname]);
 
-  // const getRoutes = (allRoutes) =>
-  //   allRoutes.map((route) => {
-  //     if (route.collapse) {
-  //       return getRoutes(route.collapse);
-  //     }
+  const getRoutes = (allRoutes) =>
+    allRoutes.map((route) => {
+      if (route.collapse) {
+        return getRoutes(route.collapse);
+      }
 
-  //     if (route.route) {
-  //       return <Route exact path={route.route} element={route.component} key={route.key} />;
-  //     }
+      if (route.route) {
+        return <Route exact path={route.route} element={route.component} key={route.key} />;
+      }
 
-  //     return null;
-  //   });
+      return null;
+    });
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Routes>
         {/* <Route path="/blog-posts/single-article/:postId" element={<SingleArticle />} /> */}
-        {/* {getRoutes(routes)} */}
+        {getRoutes(routes)}
         <Route path="/">
           <Route path="sign-in" element={<SignInSimple />} />
           <Route

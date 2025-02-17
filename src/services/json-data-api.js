@@ -6,6 +6,7 @@ class SiteData {
   urls = {
     playlists: this.baseURL.concat("scc-playlists.json"),
     events: this.baseURL.concat("scc-events.json"),
+    news: this.baseURL.concat("scc-news.json"),
   };
 
   // eslint-disable-next-line
@@ -19,6 +20,9 @@ class SiteData {
 
   // eslint-disable-next-line
   events = async () => await this.fetchData(this.urls.events);
+
+  // eslint-disable-next-line
+  news = async () => await this.fetchData(this.urls.news);
 }
 
 const siteData = new SiteData();

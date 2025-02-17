@@ -20,7 +20,7 @@ import MonthlyMeetings from "pages/Media/MonthlyMeetings";
 
 function VideosSection() {
   const ref = useRef(null);
-  const tabs = ["News", "Events", "National Conference", "Monthly Meetings", "Video Archive"];
+  const tabs = ["News", "Events", "Conference", "Meetings", "Media"];
   // const [playlists, setPlaylists] = useState(null);
   // const [selectedVideo, setSelectedVideo] = useState({});
   // const [videos, setVideos] = useState([]);
@@ -80,7 +80,7 @@ function VideosSection() {
   return (
     <MKBox style={{ background: "white" }} shadow="lg">
       <MKTypography variant="h1" textAlign="center" p="20px 0 0 0">
-        Southern Cultural Center Media
+        SCC Member Portal
       </MKTypography>
 
       <FilterTabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -89,11 +89,11 @@ function VideosSection() {
 
       {activeTab == "Events" && <EventsSection />}
 
-      {activeTab == "National Conference" && <NationalConference />}
+      {activeTab == "Conference" && <NationalConference />}
 
-      {activeTab == "Monthly Meetings" && <MonthlyMeetings />}
+      {activeTab == "Meetings" && <MonthlyMeetings />}
 
-      {activeTab == "Video Archive" && <VideoArchive />}
+      {activeTab == "Media" && <VideoArchive />}
     </MKBox>
   );
 }

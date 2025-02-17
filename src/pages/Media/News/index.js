@@ -5,92 +5,34 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import MKBox from "components/MKBox";
 import { Link, Stack } from "@mui/material";
 import MKTypography from "components/MKTypography";
+import useNews from "hooks/news-hook";
 
 function NewsSection() {
   const ref = useRef(null);
-  //   const tabs = ["Videos", "News", "Events"];
-  //   const [playlists, setPlaylists] = useState(null);
-  //   const [selectedVideo, setSelectedVideo] = useState({});
-  //   const [videos, setVideos] = useState([]);
-  // const [nextPageToken, setNextPageToken] = useState();
-  // const [prevPageToken, setPrevPageToken] = useState();
-  // const [pageToken, setPageToken] = useState();
-  // const [perPage, setPerPage] = useState(20);
-  // const [totalVideos, setTotalVideos] = useState(0);
-  // const [page, setPage] = useState(0);
-  //   const tabOptions = [
-  // VideoFilters.conferences,
-  // VideoFilters.meetings,
-  // VideoFilters.other,
-  //   ];
-  //   const [activeTab, setActiveTab] = useState(tabs[0]);
-  //   const [activePlaylist, setActivePlaylist] = useState(null);
-
-  //   const youtubeAPI = new YouTubeAPI(
-  //     setPlaylists,
-  //     activePlaylist,
-  //     setActivePlaylist,
-  //     setSelectedVideo,
-  //     setVideos
-  //   );
-
-  //   const fetchVideos = useCallback(async () => {
-  //     await youtubeAPI.fetch();
-  //   }, [activePlaylist]);
-
-  //   const fetchPlaylists = useCallback(async () => {
-  //     const json = await siteData.playlists();
-
-  //     console.log(json);
-  //     setPlaylists(json);
-  //     setActivePlaylist(json[0]);
-  //   }, []);
-
-  //   useEffect(() => {
-  //     if (activePlaylist == null) {
-  //       fetchPlaylists();
-  //     }
-
-  //     if (playlists != null) {
-  //       fetchVideos();
-  //     }
-  //   }, [activePlaylist]);
-
-  //   // const handleChangePage = (event, newPage) => {
-  //   //   if (newPage > page) {
-  //   //     setPageToken(nextPageToken);
-  //   //     setPage(newPage);
-  //   //   } else if (newPage < page) {
-  //   //     setPageToken(prevPageToken);
-  //   //     setPage(newPage);
-  //   //   } else {
-  //   //     return;
-  //   //   }
-  //   // };
-
-  //   function selectVideo(e, video) {
-  //     e.preventDefault();
-  //     e.stopPropagation();
-
-  //     setSelectedVideo(video);
-  //     ref.current?.scrollIntoView({ behavior: "smooth" });
-  //   }
+  const news = useNews();
 
   return (
     <Stack
       style={{ background: "white" }}
       justifySelf="center"
-      mx="auto"
+      mx="20px"
       //   shadow="lg"
       maxWidth="1080px"
       spacing="10px"
     >
-      <MKTypography variant="h3" justifySelf="center" mt="20px">
+      <MKTypography variant="h3" justifySelf="center" mt="20px" mx="auto">
         Newsletters
       </MKTypography>
-      <Link href="https://psides83.github.io/listJSON/scc-news/nov2024.pdf" target="blank">
-        November 2024
-      </Link>
+
+      {news.map((month) => (
+        <Link
+          key={month.id}
+          href={`https://psides83.github.io/listJSON/scc-news/${month.id}.pdf`}
+          target="blank"
+        >
+          {month.title}
+        </Link>
+      ))}
 
       <MKTypography variant="caption">
         * Click on a listed event to opent he flyer for the event.
